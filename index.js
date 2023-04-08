@@ -1,4 +1,4 @@
-const number = Math.floor(Math.random() * 21);
+let number = Math.floor(Math.random() * 21);
 const guessing = document.body.querySelector('.guessing');
 const scoreValue = document.body.querySelector('#scoreValue');
 const highScoreValue = document.body.querySelector('#highScoreValue');
@@ -55,6 +55,8 @@ checkBtn.addEventListener('click', ev =>{
 againBtn.addEventListener('click', ev => setNormal())
 
 function setNormal() {
+    number = Math.floor(Math.random() * 21)
+    console.log(number)
     document.body.style.backgroundColor = "black";
     document.body.style.pointerEvents = "auto";
     inputBox.style.backgroundColor = 'black'
