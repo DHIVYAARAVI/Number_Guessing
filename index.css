@@ -60,6 +60,10 @@ input{
     font-weight: bolder;
 }
 
+input, input::placeholder {
+    text-align: center; 
+}
+
 .check_btn{
     margin-left: 3.5em;
 }

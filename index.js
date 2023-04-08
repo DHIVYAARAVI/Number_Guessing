@@ -13,19 +13,22 @@ let highScore;
 
 console.log(number)
 
-function getInputValue() {
-    const input = Number(inputBox.value);
-    return input;
-}
 
 function scoreCalculation(){
     score--;
+    if(score <= 0) {
+        guessing.textContent = "😭 You lost the game";
+        scoreValue.textContent = 0;
+        score = 0;
+        document.body.style.pointerEvents = "none";
+        return;
+    }
     scoreValue.textContent = score;
 }
 
 
 function gameWon() {
-    document.body.style.backgroundColor = "lightgreen";
+    document.body.style.backgroundColor = "lightgreen"; 
     document.body.style.pointerEvents = "none";
     againBtn.style.cursor = "pointer"
     againBtn.style.pointerEvents = "auto"
@@ -38,18 +41,24 @@ function gameWon() {
     return;
 }
 
+
 function Low() {
-    guessing.textContent = 'Too Low'
     scoreCalculation();
+    score!=0 ? guessing.textContent = '📉 Too Low': null;
 }
 
 function High() {
-    guessing.textContent = 'Too High'
     scoreCalculation();
+    score!=0 ? guessing.textContent = '📈 Too High': null;
 }
 
 checkBtn.addEventListener('click', ev =>{
-    getInputValue() === number ? gameWon() : (getInputValue() < number ? Low() : High()) ;
+    const input = Number(inputBox.value);
+    if(input === 0)  {
+        guessing.textContent = "❗️ No Number"
+        return;
+    }
+    input === number ? gameWon() : (input < number ? Low() : High()) ;
 })
 
 againBtn.addEventListener('click', ev => setNormal())
